@@ -5,6 +5,7 @@
 .venv/
 env/
 
+
 # Ignorar diretórios de cache
 __pycache__/
 *.py[cod]
