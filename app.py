@@ -10,8 +10,8 @@ _ = load_dotenv(find_dotenv())
 # Chave da API protegida (pegando a chave do arquivo .env)
 groq_api_key = os.getenv("GROQ_API_KEY")
 
-# Inicializa o modelo gemma-7b-it com a chave API
-chat = ChatGroq(temperature=0.7, model_name="gemma-7b-it", api_key=groq_api_key)
+# Inicializa o modelo lhama3 com a chave API
+chat = ChatGroq(temperature=0.7, model_name="llama3-8b-8192", api_key=groq_api_key)
 
 # Título do app
 st.title("AssistenteCorretor")
