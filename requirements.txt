@@ -1,0 +1,9 @@
+streamlit==1.27.2
+langchain-core==0.0.1  # Adapte a versão de acordo com o que você está usando.
+langchain-groq==0.0.1   # Adapte a versão conforme necessário.
+spacy==3.6.0            # Certifique-se de instalar a versão compatível.
+textblob==0.17.1
+vaderSentiment==3.3.2
+wordcloud==1.8.1
+matplotlib==3.8.0
+python-dotenv==1.0.0
