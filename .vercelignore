@@ -1,0 +1,6 @@
+# Ignore node_modules e outras pastas desnecessárias
+node_modules/
+logs/
+tests/
+.env
+.venv/

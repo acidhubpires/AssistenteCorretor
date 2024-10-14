@@ -14,7 +14,7 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 chat = ChatGroq(temperature=0.7, model_name="gemma-7b-it", api_key=groq_api_key)
 
 # Título do app
-st.title("AssistenteCorretor by OpenHouse")
+st.title("AssistenteCorretor")
 
 # Estado de sessão para rastrear o nome do usuário e interações
 if "name" not in st.session_state:
