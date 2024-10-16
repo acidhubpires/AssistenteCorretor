@@ -14,7 +14,7 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 chat = ChatGroq(temperature=0.7, model_name="llama3-8b-8192", api_key=groq_api_key)
 
 # Título do app
-st.title("Inteligência Energias")
+st.title("Fenix Ativos IA")
 
 # Estado de sessão para rastrear o nome do usuário e interações
 if "name" not in st.session_state:
