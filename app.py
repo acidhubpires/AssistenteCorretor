@@ -14,7 +14,7 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 chat = ChatGroq(temperature=0.7, model_name="llama3-8b-8192", api_key=groq_api_key)
 
 # Título do app
-st.title("AssistenteCorretor")
+st.title("Inteligência Energias")
 
 # Estado de sessão para rastrear o nome do usuário e interações
 if "name" not in st.session_state:
@@ -29,9 +29,24 @@ if "questions_asked" not in st.session_state:
 # Função para configurar o sistema de prompt com restrições de contexto
 def get_system_prompt():
     return """
-    Você é um assistente especializado em ajudar usuários com questões relacionadas ao mercado imobiliário. 
-    Não responda perguntas que não sejam sobre imóveis, compra, venda, aluguel, ou outros tópicos diretamente relacionados ao mercado imobiliário.
-    Se uma pergunta estiver fora do contexto do mercado imobiliário, gentilmente explique ao usuário que você só pode responder perguntas dentro desse contexto.
+    Você é um consultor especializado em energia renovável, com foco em energia solar, geração distribuída e o mercado livre de energia no Brasil.
+    
+    Seu objetivo é ajudar os usuários a realizar negócios no setor de energia, com ênfase nos seguintes tópicos:
+    - Compra e venda de ativos energéticos
+    - Desenvolvimento de negócios e projetos de geração distribuída e mercado livre
+    - Elaboração de contratos para o setor de energia, incluindo PPAs (Power Purchase Agreements), contratos de conexão à rede e contratos de venda de energia no mercado livre
+    - Questões regulatórias do setor de energia no Brasil, como as resoluções da ANEEL e as normas que regem a geração distribuída e o mercado livre de energia
+    - Estratégias de negociação e financiamento de projetos de energia solar e outros ativos renováveis
+    - Elaborar teaser de negócios de energia
+    - Desenvolver novos modelos viáveis para geração distribuido como contratos de eficiencia programada e outros
+
+    Você deve fornecer explicações detalhadas sobre:
+    - Como realizar transações seguras e eficazes de compra e venda de ativos energéticos
+    - Como desenvolver projetos de geração distribuída e de energia solar, desde a fase inicial até a conexão à rede e a comercialização
+    - Como navegar pelas regulamentações brasileiras, especialmente as exigências da ANEEL e outros reguladores
+    - Como criar contratos sólidos para o setor, garantindo a conformidade com as normas e protegendo os interesses de todas as partes envolvidas
+
+    Não responda perguntas que não estejam relacionadas ao setor de energia renovável ou ao mercado de energia brasileiro. Se uma pergunta estiver fora do contexto, informe gentilmente que só pode responder perguntas relacionadas a esses temas.
     """
 
 # Fluxo inicial: Nome do usuário
@@ -40,7 +55,7 @@ if not st.session_state.name:
 
 # Exibe mensagem de boas-vindas e perguntas pré-definidas após inserir o nome
 if st.session_state.name:
-    st.write(f"Bem-vindo, {st.session_state.name}! Este assistente só responde perguntas relacionadas ao mercado imobiliário.")
+    st.write(f"Bem-vindo, {st.session_state.name}! Este assistente só responde perguntas relacionadas ao setor de energias do Brasil.")
 
     # Verificar se restam duas perguntas e mostrar um aviso
     if st.session_state.questions_asked == 8:
@@ -50,11 +65,11 @@ if st.session_state.name:
     if st.session_state.questions_asked < 10:
         # Opções de perguntas pré-definidas
         questions = [
-            "Como conseguir compradores (leads)?",
-            "Onde encontrar imóveis?",
-            "Como divulgar um imóvel nas redes sociais?",
-            "Como fazer um hot-site com fotos?",
-            "Criar um modelo de contrato de visita, compra e venda."
+            "Quais são os requisitos regulatórios para implementar um projeto de geração distribuída no Brasil",
+            "Como elaborar um contrato de PPA para venda de energia solar no mercado livre?",
+            "Quais são as etapas para comprar um ativo de energia solar no mercado livre?",
+            "Quais as normas da ANEEL que impactam o setor de energia solar?",
+            "Como financiar um projeto de geração distribuída de energia solar no Brasil?"
         ]
 
         # Exibe uma seleção de perguntas pré-definidas
