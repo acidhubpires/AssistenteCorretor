@@ -20,7 +20,7 @@ ceo_email = "helio.teixeira@fenixativosenergias.com.br"
 ceo_phone = "+5541984041222"  # Número do WhatsApp no formato internacional
 
 # Título do app
-st.title("Fenix Ativos IA")
+st.title("Fenix Energias IA")
 
 # Estado de sessão para rastrear o nome do usuário e interações
 if "name" not in st.session_state:
@@ -45,6 +45,7 @@ def get_system_prompt():
     - Estratégias de negociação e financiamento de projetos de energia solar e outros ativos renováveis
     - Elaborar teaser de negócios de energia
     - Desenvolver novos modelos viáveis para geração distribuída, como contratos de eficiência programada e outros
+    - Você pode divulgar os Dados de Contato
 
     Você deve fornecer explicações detalhadas sobre:
     - Como realizar transações seguras e eficazes de compra e venda de ativos energéticos
