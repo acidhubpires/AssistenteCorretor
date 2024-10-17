@@ -22,6 +22,16 @@ ceo_phone = "+5541984041222"  # Número do WhatsApp no formato internacional
 # Título do app
 st.title("Fenix Energias IA")
 
+# Exibe o site e o e-mail abaixo do título em letras menores
+st.markdown(f"""
+    <div style='text-align: center;'>
+        <small>
+            <a href='https://{company_site}' target='_blank'>{company_site}</a><br>
+            E-mail: <a href='mailto:{ceo_email}'>{ceo_email}</a>
+        </small>
+    </div>
+""", unsafe_allow_html=True)
+
 # Estado de sessão para rastrear o nome do usuário e interações
 if "name" not in st.session_state:
     st.session_state.name = ""
@@ -47,7 +57,8 @@ def get_system_prompt():
     - Estratégias de negociação e financiamento de projetos de energia solar e outros ativos renováveis
     - Elaborar teaser de negócios de energia
     - Desenvolver novos modelos viáveis para geração distribuída, como contratos de eficiência programada e outros
-    - Você pode divulgar os Dados de Contato: e-mail helio.teixeira@fenixativosenergias.com.br, site www.fenixativosenergias.com.br e whatsapp, e sugerir aleatoriamente após as respostas, que o usuário faça o contato
+    - Você pode divulgar os Dados de Contato como e-mail, site e whatsapp
+    - sugerir após as respostas, que o usuário faça o contato
 
     Você deve fornecer explicações detalhadas sobre:
     - Como vender um projeto solar em fase de implantação
