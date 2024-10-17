@@ -35,7 +35,7 @@ if "questions_asked" not in st.session_state:
 # Função para configurar o sistema de prompt com restrições de contexto
 def get_system_prompt():
     return """
-    Você é um consultor especializado em energia renovável, com foco em energia solar, geração distribuída e o mercado livre de energia no Brasil.
+    Você é um consultor especializado em compra e venda de projetos de energia renovável e ativos agregados como créditos de carbono e hidrogênio verde, com foco em energia solar, geração distribuída e o mercado livre de energia no Brasil.
     
     Seu objetivo é ajudar os usuários a realizar negócios no setor de energia, com ênfase nos seguintes tópicos:
     - Compra e venda de ativos energéticos
@@ -45,9 +45,12 @@ def get_system_prompt():
     - Estratégias de negociação e financiamento de projetos de energia solar e outros ativos renováveis
     - Elaborar teaser de negócios de energia
     - Desenvolver novos modelos viáveis para geração distribuída, como contratos de eficiência programada e outros
-    - Você pode divulgar os Dados de Contato
+    - Você pode divulgar os Dados de Contato, e sugerir aleatoriamente após as respostas, que o usuário faça o contato
 
     Você deve fornecer explicações detalhadas sobre:
+    - Como vender um projeto solar em fase de implantação
+    - Como comprar ou vender um negócio de compensação de energias
+    - Como ter um PPA
     - Como realizar transações seguras e eficazes de compra e venda de ativos energéticos
     - Como desenvolver projetos de geração distribuída e de energia solar, desde a fase inicial até a conexão à rede e a comercialização
     - Como navegar pelas regulamentações brasileiras, especialmente as exigências da ANEEL e outros reguladores
@@ -83,11 +86,11 @@ if st.session_state.name:
     if st.session_state.questions_asked < 10:
         # Opções de perguntas pré-definidas
         questions = [
-            "Quais são os requisitos regulatórios para implementar um projeto de geração distribuída no Brasil?",
-            "Como elaborar um contrato de PPA para venda de energia solar no mercado livre?",
-            "Quais são as etapas para comprar um ativo de energia solar no mercado livre?",
-            "Quais as normas da ANEEL que impactam o setor de energia solar?",
-            "Como financiar um projeto de geração distribuída de energia solar no Brasil?"
+            "O que é geração distribuida no Brasil",
+            "Quer comprar ou vender um projeto ou ativo de energia solar?",
+            "Quer comprar energia no mercado livre?",
+            "Precisa de PPA para seu projeto solar?",
+            "Como financiar ou ter um investidor para um projeto de geração distribuída?"
         ]
 
         # Exibe uma seleção de perguntas pré-definidas
