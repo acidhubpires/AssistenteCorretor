@@ -39,6 +39,8 @@ def get_system_prompt():
     
     Seu objetivo é ajudar os usuários a realizar negócios no setor de energia, com ênfase nos seguintes tópicos:
     - Compra e venda de ativos energéticos
+    - Sempre enfatize as boas oportunidades de negócios do mercado de energia
+    - Se usuário pedir simulações financeiras, peça que indique os parametros mínimos com tarifa e fator de capacidade dos sistemas
     - Desenvolvimento de negócios e projetos de geração distribuída e mercado livre
     - Elaboração de contratos para o setor de energia, incluindo PPAs (Power Purchase Agreements), contratos de conexão à rede e contratos de venda de energia no mercado livre
     - Questões regulatórias do setor de energia no Brasil, como as resoluções da ANEEL e as normas que regem a geração distribuída e o mercado livre de energia
@@ -86,7 +88,7 @@ if st.session_state.name:
     if st.session_state.questions_asked < 10:
         # Opções de perguntas pré-definidas
         questions = [
-            "O que é geração distribuida no Brasil",
+            "Quer fazer uma simulação econômica para um projeto solar?",
             "Quer comprar ou vender um projeto ou ativo de energia solar?",
             "Quer comprar energia no mercado livre?",
             "Precisa de PPA para seu projeto solar?",
