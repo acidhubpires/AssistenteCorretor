@@ -10,8 +10,14 @@ _ = load_dotenv(find_dotenv())
 # Chave da API protegida (pegando a chave do arquivo .env)
 groq_api_key = os.getenv("GROQ_API_KEY")
 
-# Inicializa o modelo lhama3 com a chave API
+# Inicializa o modelo llama3 com a chave API
 chat = ChatGroq(temperature=0.7, model_name="llama3-8b-8192", api_key=groq_api_key)
+
+# Dados de contato
+ceo_name = "Hélio Teixeira"
+company_site = "www.fenixativosenergias.com.br"
+ceo_email = "helio.teixeira@fenixativosenergias.com.br"
+ceo_phone = "+5541984041222"  # Número do WhatsApp no formato internacional
 
 # Título do app
 st.title("Fenix Ativos IA")
@@ -38,7 +44,7 @@ def get_system_prompt():
     - Questões regulatórias do setor de energia no Brasil, como as resoluções da ANEEL e as normas que regem a geração distribuída e o mercado livre de energia
     - Estratégias de negociação e financiamento de projetos de energia solar e outros ativos renováveis
     - Elaborar teaser de negócios de energia
-    - Desenvolver novos modelos viáveis para geração distribuido como contratos de eficiencia programada e outros
+    - Desenvolver novos modelos viáveis para geração distribuída, como contratos de eficiência programada e outros
 
     Você deve fornecer explicações detalhadas sobre:
     - Como realizar transações seguras e eficazes de compra e venda de ativos energéticos
@@ -48,6 +54,17 @@ def get_system_prompt():
 
     Não responda perguntas que não estejam relacionadas ao setor de energia renovável ou ao mercado de energia brasileiro. Se uma pergunta estiver fora do contexto, informe gentilmente que só pode responder perguntas relacionadas a esses temas.
     """
+
+# Função para detectar a intenção do usuário (comprar, vender ou desenvolver)
+def detect_user_intent(user_input):
+    if "comprar" in user_input.lower():
+        return "comprar"
+    elif "vender" in user_input.lower():
+        return "vender"
+    elif "desenvolver" in user_input.lower():
+        return "desenvolver"
+    else:
+        return None
 
 # Fluxo inicial: Nome do usuário
 if not st.session_state.name:
@@ -65,7 +82,7 @@ if st.session_state.name:
     if st.session_state.questions_asked < 10:
         # Opções de perguntas pré-definidas
         questions = [
-            "Quais são os requisitos regulatórios para implementar um projeto de geração distribuída no Brasil",
+            "Quais são os requisitos regulatórios para implementar um projeto de geração distribuída no Brasil?",
             "Como elaborar um contrato de PPA para venda de energia solar no mercado livre?",
             "Quais são as etapas para comprar um ativo de energia solar no mercado livre?",
             "Quais as normas da ANEEL que impactam o setor de energia solar?",
@@ -86,6 +103,9 @@ if st.session_state.name:
             # Adiciona a pergunta no histórico
             st.session_state.messages.append({"role": "user", "content": user_input})
 
+            # Detecta a intenção do usuário
+            user_intent = detect_user_intent(user_input)
+
             # Resposta do modelo de IA com o sistema de prompt restritivo
             try:
                 # Configura o sistema de prompt e concatena com a pergunta do usuário
@@ -100,6 +120,13 @@ if st.session_state.name:
 
                 # Incrementa o contador de perguntas
                 st.session_state.questions_asked += 1
+
+                # Se o usuário tiver interesse em comprar ou vender, exibe o contato do CEO
+                if user_intent == "comprar" or user_intent == "vender":
+                    st.write(f"**Parece que você está interessado em {user_intent}. Para mais detalhes, entre em contato com o CEO, {ceo_name}, pelo WhatsApp.**")
+                    # Link do WhatsApp com o número do CEO
+                    whatsapp_link = f"https://wa.me/{ceo_phone}"
+                    st.markdown(f"[Clique aqui para abrir o WhatsApp](https://wa.me/{ceo_phone})")
 
             except Exception as e:
                 st.error(f"Erro ao chamar o modelo: {e}")
