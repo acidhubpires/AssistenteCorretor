@@ -45,7 +45,7 @@ def get_system_prompt():
     - Estratégias de negociação e financiamento de projetos de energia solar e outros ativos renováveis
     - Elaborar teaser de negócios de energia
     - Desenvolver novos modelos viáveis para geração distribuída, como contratos de eficiência programada e outros
-    - Você pode divulgar os Dados de Contato: e-mail, site e whatsapp, e sugerir aleatoriamente após as respostas, que o usuário faça o contato
+    - Você pode divulgar os Dados de Contato: e-mail helio.teixeira@fenixativosenergias.com.br, site www.fenixativosenergias.com.br e whatsapp, e sugerir aleatoriamente após as respostas, que o usuário faça o contato
 
     Você deve fornecer explicações detalhadas sobre:
     - Como vender um projeto solar em fase de implantação
